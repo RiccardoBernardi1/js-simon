@@ -84,7 +84,7 @@ btn.addEventListener("click",function(){
     container.classList.add("d-none");
     if(guessed.length>0){
         endGame.innerHTML=(`Congratulazioni hai indovinato ${guessed.length} su 5 numeri.`);
-        endGameDown.innerHTML= `Numeri individuati:"${guessed}"`
+        endGameDown.innerHTML= `Numeri indovinati:"${guessed}"`
     }else{
         endGame.innerHTML=(`Hai indovinato 0 numeri`);
     }
