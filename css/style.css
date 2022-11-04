@@ -8,12 +8,22 @@
 
 /* BODY */
 
-body{
+main{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+h1{
+    font-size: 3.75rem;
 }
 .d-none{
     display: none;
+}
+#numbers{
+    margin: 2.5rem 0;
+    font-size: 50px;
 }

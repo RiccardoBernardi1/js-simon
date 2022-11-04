@@ -11,6 +11,8 @@
 let numbers=[];
 let guessed=[];
 const screenNumbers=document.getElementById("numbers");
+const time=document.getElementById("time");
+const title=document.querySelector("h1");
 while(numbers.length<5){
     let numRandom = Math.floor(Math.random() * (100 - 1 + 1) ) + 1;
     if(!(numbers.includes(numRandom))){
@@ -19,8 +21,16 @@ while(numbers.length<5){
 } 
 console.log(numbers);
 screenNumbers.innerHTML=numbers;
+let count=29;
+const timer=setInterval(function(){
+            time.innerHTML=`Tempo rimanente: ${count} secondi`;
+            count--
+            },1000);
 setTimeout(function() {
     screenNumbers.classList.add("d-none");
+    title.classList.add("d-none");
+    clearInterval(timer);
+    time.innerHTML="";
 },30000);
 setTimeout(function(){
     for (let i = 0; i < numbers.length; i++) {
@@ -31,5 +41,5 @@ setTimeout(function(){
         console.log(guessed);
     }
     alert(`Congratulazioni hai indovinato ${guessed.length} su 5 numeri.
-    Numeri individuati:"${guessed}"`)
+    Numeri individuati:"${guessed}"`);
 },31000);
