@@ -7,7 +7,21 @@
 //    - Se il numero è presente nell'array lo aggiungo ad un ulteriore array
 //    - Comunicare all'utente quanti e quali numeri sono nel secondo array
 
+// FUNCTIONS
+
+function checkNumbers(userNumber,array1,array2){
+    if(array1.includes(userNumber)){
+        array2.push(userNumber);
+    }
+}
+function inputValidation(input,min,max){
+    if (isNaN(input)||input<min||input>max){
+        return false;
+    }
+    return true;
+}
 // MAIN
+
 let numbers=[];
 let guessed=[];
 const screenNumbers=document.getElementById("numbers");
@@ -15,6 +29,8 @@ const time=document.getElementById("time");
 const title=document.querySelector("h1");
 const endGame=document.getElementById("endGame-up");
 const endGameDown= document.getElementById("endGame-down");
+const container= document.getElementById("container");
+const btn= document.getElementById("btn");
 while(numbers.length<5){
     let numRandom = Math.floor(Math.random() * (100 - 1 + 1) ) + 1;
     if(!(numbers.includes(numRandom))){
@@ -33,19 +49,40 @@ setTimeout(function() {
     title.classList.add("d-none");
     clearInterval(timer);
     time.innerHTML="";
+    container.classList.remove("d-none");
 },30000);
-setTimeout(function(){
-    for (let i = 0; i < numbers.length; i++) {
-        let userNumber=Number(prompt("Inserisci un numero"));
-        if(numbers.includes(userNumber)){
-            guessed.push(userNumber);
-        }
-        console.log(guessed);
+btn.addEventListener("click",function click(){
+    let firstUserNumber=Number(document.getElementById("first-user-number").value);
+    let secondUserNumber=Number(document.getElementById("second-user-number").value);
+    let thirdUserNumber=Number(document.getElementById("third-user-number").value);
+    let fourthUserNumber=Number(document.getElementById("fourth-user-number").value);
+    let fifthUserNumber=Number(document.getElementById("fifth-user-number").value);
+    checkNumbers(firstUserNumber,numbers,guessed);
+    checkNumbers(secondUserNumber,numbers,guessed);
+    checkNumbers(thirdUserNumber,numbers,guessed);
+    checkNumbers(fourthUserNumber,numbers,guessed);
+    checkNumbers(fifthUserNumber,numbers,guessed);
+    if(inputValidation(firstUserNumber,1,100)===false){
+        alert("Devi inserire un numero valido!");
+        return
+    }else if(inputValidation(secondUserNumber,1,100)===false){
+        alert("Devi inserire un numero valido!");
+        return
+    }else if(inputValidation(thirdUserNumber,1,100)===false){
+        alert("Devi inserire un numero valido!");
+        return
+    }else if(inputValidation(fourthUserNumber,1,100)===false){
+        alert("Devi inserire un numero valido!");
+        return
+    }else if(inputValidation(fifthUserNumber,1,100)===false){
+        alert("Devi inserire un numero valido!");
+        return
     }
+    container.classList.add("d-none");
     if(guessed.length>0){
         endGame.innerHTML=(`Congratulazioni hai indovinato ${guessed.length} su 5 numeri.`);
         endGameDown.innerHTML= `Numeri individuati:"${guessed}"`
     }else{
         endGame.innerHTML=(`Hai indovinato 0 numeri`);
     }
-},31000);
+});

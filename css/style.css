@@ -6,7 +6,7 @@
     padding: 0;
 }
 
-/* BODY */
+/* MAIN */
 
 main{
     display: flex;
@@ -32,4 +32,13 @@ h1{
 }
 #endGame-down,#endGame-up{
     font-size: 3.125rem;
+}
+#user-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    padding: 1.875rem;
+    border-radius: .9375rem;
 }
