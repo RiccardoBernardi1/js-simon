@@ -27,3 +27,9 @@ h1{
     margin: 2.5rem 0;
     font-size: 50px;
 }
+#time{
+    font-size: 1.25rem;
+}
+#endGame-down,#endGame-up{
+    font-size: 3.125rem;
+}

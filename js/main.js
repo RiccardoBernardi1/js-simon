@@ -13,6 +13,8 @@ let guessed=[];
 const screenNumbers=document.getElementById("numbers");
 const time=document.getElementById("time");
 const title=document.querySelector("h1");
+const endGame=document.getElementById("endGame-up");
+const endGameDown= document.getElementById("endGame-down");
 while(numbers.length<5){
     let numRandom = Math.floor(Math.random() * (100 - 1 + 1) ) + 1;
     if(!(numbers.includes(numRandom))){
@@ -40,6 +42,10 @@ setTimeout(function(){
         }
         console.log(guessed);
     }
-    alert(`Congratulazioni hai indovinato ${guessed.length} su 5 numeri.
-    Numeri individuati:"${guessed}"`);
+    if(guessed.length>0){
+        endGame.innerHTML=(`Congratulazioni hai indovinato ${guessed.length} su 5 numeri.`);
+        endGameDown.innerHTML= `Numeri individuati:"${guessed}"`
+    }else{
+        endGame.innerHTML=(`Hai indovinato 0 numeri`);
+    }
 },31000);
