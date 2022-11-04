@@ -6,3 +6,30 @@
 //    - Generare con un ciclo for 5 prompt che richiedono un numero all'utente
 //    - Se il numero è presente nell'array lo aggiungo ad un ulteriore array
 //    - Comunicare all'utente quanti e quali numeri sono nel secondo array
+
+// MAIN
+let numbers=[];
+let guessed=[];
+const screenNumbers=document.getElementById("numbers");
+while(numbers.length<5){
+    let numRandom = Math.floor(Math.random() * (100 - 1 + 1) ) + 1;
+    if(!(numbers.includes(numRandom))){
+        numbers.push(numRandom);
+    }
+} 
+console.log(numbers);
+screenNumbers.innerHTML=numbers;
+setTimeout(function() {
+    screenNumbers.classList.add("d-none");
+},30000);
+setTimeout(function(){
+    for (let i = 0; i < numbers.length; i++) {
+        let userNumber=Number(prompt("Inserisci un numero"));
+        if(numbers.includes(userNumber)){
+            guessed.push(userNumber);
+        }
+        console.log(guessed);
+    }
+    alert(`Congratulazioni hai indovinato ${guessed.length} su 5 numeri.
+    Numeri individuati:"${guessed}"`)
+},31000);
