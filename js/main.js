@@ -10,7 +10,7 @@
 // FUNCTIONS
 
 function checkNumbers(userNumber,array1,array2){
-    if(array1.includes(userNumber)){
+    if(array1.includes(userNumber)&& !(array2.includes(userNumber))){
         array2.push(userNumber);
     }
 }
@@ -20,6 +20,7 @@ function inputValidation(input,min,max){
     }
     return true;
 }
+
 // MAIN
 
 let numbers=[];
@@ -31,6 +32,8 @@ const endGame=document.getElementById("endGame-up");
 const endGameDown= document.getElementById("endGame-down");
 const container= document.getElementById("container");
 const btn= document.getElementById("btn");
+const playAgain= document.getElementById("play-again");
+document.getElementById("user-input").reset();
 while(numbers.length<5){
     let numRandom = Math.floor(Math.random() * (100 - 1 + 1) ) + 1;
     if(!(numbers.includes(numRandom))){
@@ -51,7 +54,7 @@ setTimeout(function() {
     time.innerHTML="";
     container.classList.remove("d-none");
 },30000);
-btn.addEventListener("click",function click(){
+btn.addEventListener("click",function(){
     let firstUserNumber=Number(document.getElementById("first-user-number").value);
     let secondUserNumber=Number(document.getElementById("second-user-number").value);
     let thirdUserNumber=Number(document.getElementById("third-user-number").value);
@@ -85,4 +88,8 @@ btn.addEventListener("click",function click(){
     }else{
         endGame.innerHTML=(`Hai indovinato 0 numeri`);
     }
+    playAgain.classList.remove("d-none");
 });
+playAgain.addEventListener("click",function(){
+    window.location.reload();
+})
